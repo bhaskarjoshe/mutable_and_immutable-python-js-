@@ -142,21 +142,9 @@ console.log(s, sCopy);
 
 - **Explanation**: Strings are immutable. Any operation that modifies a string creates a new string object instead of modifying the original.
 
-#### **Frozen Objects (Immutable)**
-
-```javascript
-const obj = Object.freeze({ a: 1, b: 2 });
-console.log(obj);
-// obj.a = 10; // Error: Cannot assign to read-only property
-```
-
-- **Explanation**: Freezing an object prevents modification of its properties.
-
----
-
 ## 4. **How to Make Mutable Types Immutable**
 
-### Freezing Objects
+### 1. Freezing Objects
 
 ```javascript
 const user = { name: "John", age: 30 };
@@ -164,6 +152,16 @@ Object.freeze(user);
 
 // Attempt to modify the object
 user.age = 35; // Error in strict mode
+console.log(user);
+```
+
+#### Freezing nested objects
+
+```python
+const user = { name: {firstname:"John", lastname: "Cena"}, age: 30 };
+Object.freeze(user);
+
+user.names.name1 = "Pawan";
 console.log(user);
 ```
 
@@ -183,10 +181,11 @@ const deepFreeze = (obj) => {
   });
 };
 
-const nestedObj = { a: { b: 2 }, c: 3 };
-deepFreeze(nestedObj);
-nestedObj.a.b = 10; // Error in strict mode
-console.log(nestedObj);
+const user = { name: { firstname: "John", lastname: "Cena" }, age: 30 };
+deepFreeze(user);
+
+user.name.firstname = "Pawan"; // Error in strict mode
+console.log(user);
 ```
 
 ### Using Libraries
@@ -200,7 +199,31 @@ console.log(data);
 // data.a = 10; // Error: Immutable map does not allow direct changes
 ```
 
----
+### 2. Object.seal()
+
+Prevents adding or removing properties from an object, but allows modification of existing properties.
+
+```js
+const obj = { name: "John", age: 30 };
+Object.seal(obj);
+obj.age = 35; // Allowed
+obj.newProp = "New"; // Not allowed
+delete obj.name; // Not allowed
+console.log(obj); // { name: "John", age: 35 }
+```
+
+### 3. Object.preventExtensions()
+
+Prevents adding new properties to an object but allows modifying or deleting existing ones.
+
+```js
+const obj = { name: "John", age: 30 };
+Object.preventExtensions(obj);
+obj.age = 35; // Allowed
+obj.newProp = "New"; // Not allowed
+delete obj.name; // Allowed
+console.log(obj); // { age: 35 }
+```
 
 ## Summary of Techniques
 
