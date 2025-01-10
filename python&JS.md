@@ -193,20 +193,6 @@ print('Fruits (Copy 2):', id(fruits_copy2))
 
 ```
 
-| **Type**       | **Memory Modification Methods**                                      | **Memory Address Change Methods**                                                    |
-| -------------- | -------------------------------------------------------------------- | ------------------------------------------------------------------------------------ |
-| **List**       | **mylist.sort()**- (modifies the mylistay in place)                  | **sorted(mylist)**- (creates a new sorted mylistay)                                  |
-|                | **mylist.copy()**- (creates a shallow copy in place)                 | **new_mylist = mylist**- (assigns a new reference to the same mylistay)              |
-|                | **mylist.reverse()**- (reverses the mylistay in place)               | **new_mylist = list(reversed(mylist))**- (creates a new reversed mylistay)           |
-| **Dictionary** | **dict_obj.clear()**- (removes all keys in place)                    | **d = {}**- (assigns a new empty dictionary)                                         |
-|                | **d.copy()**- (creates a shallow copy in place)                      | **d_copy1 = d**- (assigns a new reference to the same dictionary)                    |
-|                | **d_copy1 = {k:v for k,v in d.items()}**- (creates a new dictionary) | **d_copy1 = {k:v for k,v in d.items()}**- (creates a new dictionary)                 |
-| **Set**        | **set_obj.clear()**- (clears the set in place)                       | **set_obj = set()**- (assigns a new empty set)                                       |
-|                | **set_obj.update()**- (updates set in place)                         | **new_set = set_obj.union(new_set)**- (creates a new set with added elements)        |
-|                | **set_obj.intersection_update()**- (modifies the set)                | **new_set = set_obj.intersection(other_set)**- (creates a new set from intersection) |
-|                | **set_obj.add()**- (adds elements in place)                          | **new_set = set_obj.copy()**- (creates a new copy of the set)                        |
-|                | **set_obj.pop()**- (removes an arbitrary element in place)           | **new_set = {x for x in set_obj if x != 2}**- (creates a new set by filtering)       |
-
 # JAVASCRIPT
 
 ## ARRAY
@@ -298,17 +284,4 @@ fruitsQuantity_copy1.Mango = 14;
 console.log("Fruits:", fruitsQuantity);
 console.log("Fruits (Copy 1):", fruitsQuantity_copy1);
 console.log("Fruits (Copy 2):", fruitsQuantity_copy2);
-```
-
-| **Type**    | **Memory Modification Methods**                  | **Memory Address Change Methods**                                     |
-| ----------- | ------------------------------------------------ | --------------------------------------------------------------------- |
-| **Arrays**  | **arr.push()**- (modifies the array in place)    | **arr.concat()**- (creates a new array)                               |
-|             | **arr.reverse()**- (modifies the array in place) | **arr.slice().reverse()**- (creates a new reversed array)             |
-|             | **arr.shift()**- (modifies the array in place)   | **arr.slice(1)**- (creates a new array with sliced elements)          |
-|             | **arr.splice()**- (modifies the array in place)  | **arr.slice()**- (creates a new array with sliced elements)           |
-|             | **arr.forEach()**- (modifies the array in place) | **arr.map()**- (creates a new array)                                  |
-| **Objects** | **Object.assign()**- (creates a shallow copy)    | **Direct Assignment**- (assigns the reference of the original object) |
-
-```
-
 ```
